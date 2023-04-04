@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "buildinggadgets",
+  "name": "Building Gadgets",
+  "authors": [ "Flexible Games" ],
+  "description": "The functionality of Direwolfs MC Mod, 100% original code.",
+  "website": "https://www.youtube.com/c/FlexibleGames",
+  "side": "Universal",
+  "version": "0.3.0",
+  "dependency": {}
+}

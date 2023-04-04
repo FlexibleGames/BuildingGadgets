@@ -1,0 +1,8 @@
+{
+	code: "constpaste",
+	ingredients: [
+		{ type: "item", code: "game:limewaterportion", litres: 1 },
+		{ type: "block", code: "game:gravel-*", quantity: 1, name: "gravel", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate"] }
+	],
+	output: { type: "item", code: "buildinggadgets:constpaste", stackSize: 20 }
+}

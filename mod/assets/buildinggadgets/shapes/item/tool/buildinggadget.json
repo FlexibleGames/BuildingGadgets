@@ -1,0 +1,100 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"gadget": "buildinggadgets:item/gadget"
+	},
+	"elements": [
+		{
+			"name": "Base",
+			"from": [ 5.0, 0.0, 3.0 ], 
+			"to": [ 11.0, 1.0, 13.0 ], 
+			"rotationOrigin": [ 5.0, 0.0, 3.0 ],
+			"faces": {
+				"north": { "texture": "#gadget", "uv": [ 0.0, 0.0, 8.0, 16.0 ], "autoUv": false },
+				"east": { "texture": "#gadget", "uv": [ 0.0, 0.0, 8.0, 1.0 ], "autoUv": false },
+				"south": { "texture": "#gadget", "uv": [ 0.0, 0.0, 6.0, 1.0 ] },
+				"west": { "texture": "#gadget", "uv": [ 0.0, 0.0, 8.0, 1.0 ], "autoUv": false },
+				"up": { "texture": "#gadget", "uv": [ 0.0, 0.0, 6.0, 10.0 ] },
+				"down": { "texture": "#gadget", "uv": [ 0.0, 0.0, 6.0, 10.0 ] }
+			},
+			"children": [
+				{
+					"name": "Screen",
+					"from": [ 0.5, 1.0, 0.5 ], 
+					"to": [ 5.5, 1.25, 5.5 ], 
+					"rotationOrigin": [ 0.0, 1.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#gadget", "uv": [ 9.0, 0.0, 16.0, 0.5 ], "autoUv": false },
+						"east": { "texture": "#gadget", "uv": [ 9.0, 0.0, 16.0, 0.5 ], "autoUv": false },
+						"south": { "texture": "#gadget", "uv": [ 9.0, 0.0, 16.0, 0.5 ], "autoUv": false },
+						"west": { "texture": "#gadget", "uv": [ 9.0, 0.0, 16.0, 0.5 ], "autoUv": false },
+						"up": { "texture": "#gadget", "uv": [ 9.0, 0.0, 16.0, 7.0 ], "glow": 5, "autoUv": false },
+						"down": { "texture": "#gadget", "uv": [ 0.0, 0.0, 5.0, 5.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "RedButton",
+					"from": [ 0.5, 1.0, 6.5 ], 
+					"to": [ 2.5, 1.25, 8.5 ], 
+					"rotationOrigin": [ 0.0, 1.0, 6.0 ],
+					"faces": {
+						"north": { "texture": "#gadget", "uv": [ 10.0, 8.5, 12.0, 9.0 ] },
+						"east": { "texture": "#gadget", "uv": [ 9.0, 9.0, 11.0, 9.5 ] },
+						"south": { "texture": "#gadget", "uv": [ 9.5, 9.5, 11.5, 10.0 ] },
+						"west": { "texture": "#gadget", "uv": [ 10.0, 9.0, 12.0, 9.5 ] },
+						"up": { "texture": "#gadget", "uv": [ 8.5, 7.5, 12.0, 11.0 ], "glow": 2, "autoUv": false },
+						"down": { "texture": "#gadget", "uv": [ 0.0, 0.0, 2.0, 2.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "OrangeButton1",
+					"from": [ 3.0, 1.0, 6.5 ], 
+					"to": [ 4.0, 1.25, 7.5 ], 
+					"rotationOrigin": [ 2.0, 1.0, 6.0 ],
+					"faces": {
+						"north": { "texture": "#gadget", "uv": [ 14.0, 9.0, 15.0, 9.5 ] },
+						"east": { "texture": "#gadget", "uv": [ 13.5, 8.0, 14.5, 8.5 ] },
+						"south": { "texture": "#gadget", "uv": [ 13.5, 7.5, 14.5, 8.0 ] },
+						"west": { "texture": "#gadget", "uv": [ 13.5, 8.5, 14.5, 9.0 ] },
+						"up": { "texture": "#gadget", "uv": [ 14.5, 8.5, 15.5, 9.5 ] },
+						"down": { "texture": "#gadget", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "OrangeButton2",
+					"from": [ 4.5, 1.0, 6.5 ], 
+					"to": [ 5.5, 1.25, 7.5 ], 
+					"rotationOrigin": [ 3.0, 1.0, 6.0 ],
+					"faces": {
+						"north": { "texture": "#gadget", "uv": [ 14.5, 8.0, 15.5, 8.5 ] },
+						"east": { "texture": "#gadget", "uv": [ 13.5, 9.5, 14.5, 10.0 ] },
+						"south": { "texture": "#gadget", "uv": [ 14.5, 9.0, 15.5, 9.5 ] },
+						"west": { "texture": "#gadget", "uv": [ 13.0, 9.0, 14.0, 9.5 ] },
+						"up": { "texture": "#gadget", "uv": [ 14.0, 8.5, 15.0, 9.5 ] },
+						"down": { "texture": "#gadget", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "BlueBar",
+					"from": [ 3.0, 1.0, 8.5 ], 
+					"to": [ 5.5, 1.25, 9.0 ], 
+					"rotationOrigin": [ 1.0, 1.0, 8.0 ],
+					"faces": {
+						"north": { "texture": "#gadget", "uv": [ 10.0, 12.0, 12.5, 12.5 ] },
+						"east": { "texture": "#gadget", "uv": [ 9.5, 12.0, 10.0, 12.5 ] },
+						"south": { "texture": "#gadget", "uv": [ 11.5, 12.5, 14.0, 13.0 ] },
+						"west": { "texture": "#gadget", "uv": [ 11.0, 12.5, 11.5, 13.0 ] },
+						"up": { "texture": "#gadget", "uv": [ 11.0, 12.5, 13.5, 13.0 ] },
+						"down": { "texture": "#gadget", "uv": [ 10.0, 12.5, 12.5, 13.0 ], "enabled": false }
+					}
+				}
+			]
+		}
+	]}

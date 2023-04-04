@@ -1,0 +1,6 @@
+{
+	"item-buildinggadget": "Building Gadget",
+	"itemdesc-buildinggadget": "For all your building needs!<br>Functions: Build, Exchange, Destroy(it voids)<br>Tool modes: Build to Me, Horizontal Line, Vertical Line, Area, Volume<br>Placement: On Top, Inside, Under",
+	"item-constpaste": "Construction Paste",
+	"itemdesc-constpaste": "Optionally used by the <a href=\"handbook://item-buildinggadgets:buildinggadget\">Building Gadget</a> to build blocks so the player can avoid keeping many different materials in inventory. Disable in mod config to force the use of the actual block type to build.<br><br>Low/Medium soil uses 1<br>Rock uses 5<br>Everything else uses 10. (TerraPreta? ... 50)<br>Mix <strong><a href=\"handbooksearch://gravel\">Any Gravel</a></strong> with <strong><a href=\"handbook://item-limewaterportion\">Lime Water</a></strong> in a <strong><a href=\"handbook://block-barrel\">Barrel</a></strong> to craft."
+}

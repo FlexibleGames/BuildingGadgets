@@ -1,0 +1,25 @@
+[
+{
+	ingredientPattern: "CPC,CPC,TPT",
+	ingredients: {
+		"C": { type: "item", code: "game:ingot-copper" },
+		"P": { type: "item", code: "game:metalplate-iron" },
+		"T": { type: "item", code: "game:resin" }		
+	},
+	width: 3,
+	height: 3,
+	output: { type: "item", code: "buildinggadgets:buildinggadget", quantity: 1  }
+},
+{
+	ingredientPattern: "B	P",
+	ingredients: {
+		"B": { type: "item", code: "buildinggadgets:buildinggadget" },
+		"P": { type: "item", code: "game:metalplate-iron", quantity: 2 }		
+	},
+	width: 1,
+	height: 2,
+	shapeless: true,
+	averageDurability: false,
+	output: { type: "item", code: "buildinggadgets:buildinggadget", quantity: 1  }	
+}
+]

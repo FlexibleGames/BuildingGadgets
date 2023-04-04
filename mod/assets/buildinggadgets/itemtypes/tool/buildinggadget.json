@@ -1,0 +1,43 @@
+{
+	code: "buildinggadget",
+	class: "BuildingGadgetItem",
+	storageFlags: 5,
+	attributes: {
+		handbook: {
+			groupBy: ["buildinggadget"]
+		},
+		toolrackTransform: {
+			rotation: { y: 2.5, z: -1 },
+			translation: { x: -0.1, y: 0.59 },
+			scale: 1.25,
+		},
+		slotRefillIdentifier: "buildinggadget"
+	},	
+	damagedby: ["blockbreaking", "attacking"],
+	shape: { base: "buildinggadgets:item/tool/buildinggadget" },	
+	durability: 20000,	
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	guiTransform: {
+		translation: { x: 2, y: 4, z: 0 },
+		rotation: { x: 90, y: 180, z: 2 },
+		origin: { x: 0.5, y: 0.2, z: 0.6 },
+		scale: 2.11
+	},
+	fpHandTransform: {
+		translation: { x: -0.2, y: -0.2, z: 0 },
+		rotation: { x: 50, y: 16, z: 44 },
+		scale: 2.2
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.4
+	},
+	tpHandTransform: {
+		translation: { x: -0.87, y: -0.01, z: -0.56 },
+		rotation: { x: -81, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 0.8
+	}
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="21.5"
+   height="43"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="buildontop.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:lockguides="true"
+     inkscape:zoom="14.707821"
+     inkscape:cx="1.3938163"
+     inkscape:cy="21.689141"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <path
+     style="fill:#0909c7;stroke:none;stroke-width:0.632353"
+     d="M 0,0 V 4.4264706 H 1.2647059 L 1.2633779,1.2391147 3.1315256,1.2156968 3.1617647,0 H 0 M 4.4264706,0 V 1.2647059 H 10.117647 V 0 H 4.4264706 m 6.9558824,0 v 1.2647059 h 6.323529 V 0 h -6.323529 m 7.588235,0 -0.007,1.2219716 1.255599,-1.442e-4 0.0161,3.2046432 H 21.5 V 0 H 18.970588 M 0,5.6911765 V 10.75 H 1.2647059 V 5.6911765 H 0 m 20.235294,0 V 10.75 H 21.5 V 5.6911765 H 20.235294 M 0,12.014706 v 4.42647 h 1.2647059 v -4.42647 H 0 m 20.235294,0 v 4.42647 H 21.5 v -4.42647 H 20.235294 M 0,17.705882 V 21.5 h 3.1617647 l 9.485e-4,-1.266109 -1.8980073,0.0014 V 17.705882 H 0 m 20.235294,0 -0.01618,2.514103 -1.843176,0.01896 L 18.338235,21.5 H 21.5 V 17.705882 H 20.235294 M 4.4264706,20.235294 V 21.5 H 7.5882353 V 20.235294 H 4.4264706 m 4.4264706,0 V 21.5 H 12.014706 V 20.235294 H 8.8529412 m 4.4264708,0 V 21.5 h 3.794117 v -1.264706 z"
+     id="path4"
+     sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
+  <path
+     id="path6"
+     style="fill:#010101;stroke:none;stroke-width:0.632353"
+     d="M 0 21.5 L 0 43 L 21.5 43 L 21.5 21.5 L 0 21.5 z M 1.265625 22.765625 L 20.234375 22.765625 L 20.234375 41.734375 L 1.265625 41.734375 L 1.265625 22.765625 z " />
+  <path
+     style="fill:#010101;stroke:none;stroke-width:0.632353"
+     d="m 6.3235294,30.352941 0.632353,0.632353 3.1617646,-2.529412 v 9.485294 h 1.264706 v -9.485294 l 3.161765,2.529412 0.632353,-0.632353 -4.449531,-3.872637 z"
+     id="path10"
+     sodipodi:nodetypes="cccccccccc" />
+</svg>
