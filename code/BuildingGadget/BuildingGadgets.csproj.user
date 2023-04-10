@@ -4,6 +4,6 @@
     <StartAction>Program</StartAction>
     <StartProgram>C:\Users\simtr\AppData\Roaming\Vintagestory\Vintagestory.exe</StartProgram>
     <StartWorkingDirectory>C:\Users\simtr\AppData\Roaming\Vintagestory\</StartWorkingDirectory>
-    <StartArguments>-openWorld="bgmodtest" --addModPath "C:\_Programming\Vintage\BuildingGadgets\mod"</StartArguments>
+    <StartArguments>-o modtestworld --addModPath "C:\_Programming\Vintage\BuildingGadgets"</StartArguments>
   </PropertyGroup>
 </Project>
