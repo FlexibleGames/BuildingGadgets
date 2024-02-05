@@ -612,10 +612,12 @@ namespace BuildingGadgets
                                 if (player.World.BlockAccessor.GetBlock(blockPos, BlockLayersAccess.SolidBlocks).Id == 0 || blockoverwrite) // ONLY air blocks or grass-like blocks
                                 {
                                     actualpastecost += pastecost;                                    
-                                    player.World.BlockAccessor.SetBlock(block_build.Id, blockPos);                                    
+                                    player.World.BlockAccessor.SetBlock(block_build.Id, blockPos);
+                                    player.World.BlockAccessor.MarkBlockDirty(blockPos);
+                                    api.World.BlockAccessor.TriggerNeighbourBlockUpdate(blockPos);
                                 }
                             }
-                            if (BGMod.BGConfig.usePaste) ConsumePasteOrBlocks(player.Player, slot, actualpastecost);
+                            if (BGMod.BGConfig.usePaste) ConsumePasteOrBlocks(player.Player, slot, actualpastecost); // amount of paste
                             else ConsumePasteOrBlocks(player.Player, slot, actualpastecost / pastecost); // number of blocks
 
                             if (BGMod.BGConfig.useDurability) DamageItem(player.World, player, slot, actualpastecost / pastecost);                                                      
@@ -624,15 +626,26 @@ namespace BuildingGadgets
                         {
                             // no paste used, voids blocks and uses durability, ignores blocks with block entities
                             int blocksset = 0;
+
+                            int durleft = slot.Itemstack.Attributes.GetInt("durability", this.GetMaxDurability(slot.Itemstack));
+                            if (durleft == 0 && BGMod.BGConfig.useDurability)
+                            {
+                                if (capi != null) capi.ShowChatMessage($"Gadget needs repairing/recharging.");
+                                return;
+                            }
+
                             foreach (BlockPos blockPos in highlightedBlocks)
                             {
-                                if (player.World.BlockAccessor.GetBlock(blockPos).Id != 0) 
+                                if (player.World.BlockAccessor.GetBlock(blockPos).Id != 0) // block at Pos isn't air
                                 {                                    
-                                    if (player.World.BlockAccessor.GetBlockEntity(blockPos) == null)
+                                    if (player.World.BlockAccessor.GetBlockEntity(blockPos) == null &&
+                                        blocksset < durleft)
                                     {
                                         // ignores blocks with an entity for now, unless someone wants to do this
                                         blocksset++;
                                         player.World.BlockAccessor.SetBlock(0, blockPos);
+                                        player.World.BlockAccessor.MarkBlockDirty(blockPos);
+                                        api.World.BlockAccessor.TriggerNeighbourBlockUpdate(blockPos);
                                     }
                                 }
                             }
@@ -646,6 +659,8 @@ namespace BuildingGadgets
                                 blocksset++;
                                 ItemStack[] drops = player.World.BlockAccessor.GetBlock(blockPos).GetDrops(player.World, blockPos, player.Player, 1f);
                                 api.World.BlockAccessor.SetBlock(block_build.Id, blockPos);
+                                api.World.BlockAccessor.MarkBlockDirty(blockPos);
+                                api.World.BlockAccessor.TriggerNeighbourBlockUpdate(blockPos);
                                 if (drops != null && drops.Length > 0 && player.Player.WorldData.CurrentGameMode == EnumGameMode.Survival)
                                 {
                                     foreach (ItemStack itemStack in drops)
