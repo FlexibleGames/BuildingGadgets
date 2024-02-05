@@ -116,59 +116,70 @@ namespace BuildingGadgets
                     new SkillItem
                     {
                         Code = new AssetLocation("build"),
-                        Name = "Build",                        
+                        Name = "Build",     
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/build.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("destroy"),
-                        Name = "Destroy (Voids Blocks)"
+                        Name = "Destroy (Voids Blocks)",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/destroy.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("exchange"),
-                        Name = "Exchange",                        
+                        Name = "Exchange",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/exchange.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("tome"),
                         Name = "To Me",
-                        Linebreak = true
+                        Linebreak = true,
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/build2me.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("hline"),
-                        Name = "Horizontal Line"
+                        Name = "Horizontal Line",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildhline.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("vline"),
-                        Name = "Vertical Line"
+                        Name = "Vertical Line",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildvline.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("area"),
-                        Name = "Area"
+                        Name = "Area",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildarea.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("volume"),
-                        Name = "Volume"                        
+                        Name = "Volume",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildvolume.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("ontop"),
                         Name = "Build On Top",
-                        Linebreak = true
+                        Linebreak = true,
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildontop.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("inside"),
-                        Name = "Build Inside"
+                        Name = "Build Inside", 
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildinside.svg"), 48, 48, 5, new int?(-1))),
                     new SkillItem
                     {
                         Code = new AssetLocation("under"),
-                        Name = "Build Under"
+                        Name = "Build Under",
+                        TexturePremultipliedAlpha = false
                     }.WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("buildinggadgets:textures/icon/buildunder.svg"), 48, 48, 5, new int?(-1)))
                 });
                 for (int i = 0; i < toolModes.Length; i++) { toolModes[i].TexturePremultipliedAlpha = false; }                
@@ -305,7 +316,8 @@ namespace BuildingGadgets
             return new BlockPos(
                 slot.Itemstack.Attributes.GetInt("anchoredx", int.MinValue),
                 slot.Itemstack.Attributes.GetInt("anchoredy", int.MinValue),
-                slot.Itemstack.Attributes.GetInt("anchoredz", int.MinValue));
+                slot.Itemstack.Attributes.GetInt("anchoredz", int.MinValue),
+                slot.Itemstack.Attributes.GetInt("anchordim", 0));
         }
 
         /// <summary>
@@ -319,7 +331,8 @@ namespace BuildingGadgets
             return new BlockPos(
                 slot.Itemstack.Attributes.GetInt("storagex", int.MinValue),
                 slot.Itemstack.Attributes.GetInt("storagey", int.MinValue),
-                slot.Itemstack.Attributes.GetInt("storagez", int.MinValue));
+                slot.Itemstack.Attributes.GetInt("storagez", int.MinValue),
+                slot.Itemstack.Attributes.GetInt("storagedim", 0));
         }
 
         /// <summary>
@@ -551,16 +564,20 @@ namespace BuildingGadgets
         /// <param name="handling"></param>
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
-            /*if (!firstEvent)
-            {
-                base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handling);
-                return;
-            }*/
             if (!(byEntity is EntityPlayer player)) return; // a non-player is trying to use the gadget? O,o
             if (byEntity.Controls.Sneak)
             {
-                // player was sneaking when they right clicked...
-                CheckUpdateBlockOrStorage(slot, byEntity, blockSel, entitySel);
+                if (blockSel == null)
+                {
+                    // they sneaked+rightclicked into the air...
+                    ClearAnchor(slot);
+                    ClearStorage(slot);
+                }
+                else
+                {
+                    // player was sneaking when they right clicked...
+                    CheckUpdateBlockOrStorage(slot, byEntity, blockSel, entitySel);
+                }
             }
             else
             {
@@ -727,6 +744,7 @@ namespace BuildingGadgets
                     slot.Itemstack.Attributes.SetInt("anchoredx", gadget_Anchor.X);
                     slot.Itemstack.Attributes.SetInt("anchoredy", gadget_Anchor.Y);
                     slot.Itemstack.Attributes.SetInt("anchoredz", gadget_Anchor.Z);
+                    slot.Itemstack.Attributes.SetInt("anchordim", gadget_Anchor.dimension);
 
                     BlockPos tempPos = blockSel.Position.Copy();
                     tempPos.Sub(api.World.DefaultSpawnPosition.AsBlockPos);
@@ -762,8 +780,25 @@ namespace BuildingGadgets
                 this.gadget_Anchor = null;
                 slot.Itemstack.Attributes.RemoveAttribute("anchoredx");
                 slot.Itemstack.Attributes.RemoveAttribute("anchoredy");
-                slot.Itemstack.Attributes.RemoveAttribute("anchoredz");                
+                slot.Itemstack.Attributes.RemoveAttribute("anchoredz");
+                slot.Itemstack.Attributes.RemoveAttribute("anchordim");
             }
+        }
+
+        /// <summary>
+        /// Clears the saved storage block the gadget can pull from, called when player sneak-right-clicks empty air.
+        /// </summary>
+        /// <param name="slot">Gadget</param>
+        public void ClearStorage(ItemSlot slot)
+        {
+            if (GetStorageBlock(slot).X != int.MinValue)
+            {
+                this.block_Storage = null;
+                slot.Itemstack.Attributes.RemoveAttribute("storagex");
+                slot.Itemstack.Attributes.RemoveAttribute("storagey");
+                slot.Itemstack.Attributes.RemoveAttribute("storagez");
+                slot.Itemstack.Attributes.RemoveAttribute("storagedim");
+            }            
         }
 
         /// <summary>
@@ -1205,6 +1240,7 @@ namespace BuildingGadgets
                             slot.Itemstack.Attributes.SetInt("storagex", block_Storage.X);
                             slot.Itemstack.Attributes.SetInt("storagey", block_Storage.Y);
                             slot.Itemstack.Attributes.SetInt("storagez", block_Storage.Z);
+                            slot.Itemstack.Attributes.SetInt("storagedim", block_Storage.dimension);
                             if (capi != null) capi.ShowChatMessage("Gadget Storage Set");
                             return true;
                         }
@@ -1219,7 +1255,7 @@ namespace BuildingGadgets
                     }
                     // one block entity I know exists are berry bushes... should we build with those?
                 }
-            }    
+            }
             return false;
         }
 
@@ -1461,7 +1497,7 @@ namespace BuildingGadgets
         {
             byPlayer.WorldData.PickingRange = GlobalConstants.DefaultPickingRange;
             if (highlightedBlocks != null && highlightedBlocks.Count > 0)
-            {
+            {                
                 ClearHighlight(world, byPlayer, slot, true);
             }
 
